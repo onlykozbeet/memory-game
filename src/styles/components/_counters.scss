@@ -1,0 +1,46 @@
+﻿@use "../abstracts" as vars;
+
+.counters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: vars.$space * 2;
+  padding: vars.$space vars.$space * 2;
+  background: vars.$color-surface;
+  border-radius: vars.$radius * 3;
+  box-shadow: vars.$shadow-card;
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: vars.$space * 0.375;
+  min-width: 6rem;
+}
+
+.counter__label {
+  color: vars.$color-muted;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.counter__value {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.counter__total {
+  color: vars.$color-muted;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.counter__divider {
+  width: 1px;
+  height: 3.5rem;
+  background: vars.$color-background;
+}

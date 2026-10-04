@@ -1,0 +1,41 @@
+﻿@use "../abstracts" as vars;
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: vars.$space;
+  padding: vars.$space vars.$space * 1.5;
+  background: vars.$color-surface;
+  border-radius: vars.$radius * 3;
+  box-shadow: vars.$shadow-card;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: vars.$space * 0.75;
+}
+
+.header__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: vars.$color-honey;
+  font-size: 1.5rem;
+}
+
+.header__title {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+}
+
+.header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: vars.$space * 0.75;
+}

@@ -1,0 +1,49 @@
+﻿@use "../abstracts" as vars;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: vars.$space * 0.75;
+  padding: 0.8rem 1.25rem;
+  border: 0;
+  border-radius: vars.$radius * 1.8;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform vars.$transition-fast,
+    filter vars.$transition-fast,
+    box-shadow vars.$transition-fast;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button__icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.button--ghost {
+  background: vars.$color-background;
+  color: vars.$color-primary;
+}
+
+.button--ghost:hover {
+  filter: brightness(0.96);
+}
+
+.button--primary {
+  background: vars.$color-primary;
+  color: vars.$color-surface;
+}
+
+.button--primary:hover {
+  filter: brightness(1.08);
+}
