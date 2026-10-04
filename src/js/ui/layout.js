@@ -1,5 +1,5 @@
 import { createElement } from "../utils/dom";
-import { TOTAL_PAIRS } from "../game/cards";
+import { TOTAL_PAIRS } from "../game/deck";
 
 const createHeaderButton = ({ variant, icon, label, onClick }) => {
   const iconElement = createElement("span", {
@@ -41,8 +41,8 @@ const createHeader = ({ onNewGame, onOpenLeaderboard }) => {
     }),
     createHeaderButton({
       variant: "primary",
-      icon: "♛",
-      label: "Таблица лидеров",
+      icon: "#",
+      label: "Leaderboard",
       onClick: onOpenLeaderboard,
     })
   );
@@ -61,7 +61,7 @@ const createCounters = () => {
   const movesCounter = createElement(
     "div",
     { className: "counter" },
-    createElement("span", { className: "counter__label", text: "Ходы" }),
+    createElement("span", { className: "counter__label", text: "Moves" }),
     movesValue
   );
   const pairsCounter = createElement(
@@ -69,7 +69,7 @@ const createCounters = () => {
     { className: "counter" },
     createElement("span", {
       className: "counter__label",
-      text: "Найдено пар",
+      text: "Pairs found",
     }),
     createElement(
       "span",
@@ -84,7 +84,7 @@ const createCounters = () => {
   });
   const element = createElement(
     "section",
-    { className: "counters", attrs: { "aria-label": "Статистика игры" } },
+    { className: "counters", attrs: { "aria-label": "Game statistics" } },
     movesCounter,
     divider,
     pairsCounter
