@@ -1,0 +1,19 @@
+@use "../abstracts" as vars;
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space * 2;
+  min-height: 100dvh;
+  padding: vars.$space * 1.5;
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: vars.$space * 1.5;
+  width: 100%;
+}
