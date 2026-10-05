@@ -1,5 +1,9 @@
 import { createNewGame, resolveMismatch, openCard } from "./game/game";
 import { createGameView } from "./ui/view-layout";
+import { openModal } from "./ui/modal-controller";
+import { createLeaderboardContent, createWinContent } from "./ui/modal";
+import { saveResult, loadResults } from "./storage/leaderboard";
+import { checkPlural } from "./utils/helpers";
 
 const DELAY = 1000;
 
@@ -16,8 +20,6 @@ export const createApp = (mount) => {
     state = createNewGame();
     view.render(state);
   };
-
-  const onOpenLeaderboard = () => {};
 
   const handleCardClick = (cardId) => {
     const previousState = state;
@@ -36,11 +38,33 @@ export const createApp = (mount) => {
       }, DELAY);
       return;
     }
+
+    if (outcome === "won") {
+      saveResult(state.moves);
+      openWinModal();
+    }
+  };
+
+  const openWinModal = () => {
+    openModal(({ close }) =>
+      createWinContent({
+        moves: state.moves,
+        movesLabel: checkPlural(state.moves),
+        onNewGame: startNewGame,
+        close,
+      })
+    );
+  };
+
+  const openLeaderboardModal = () => {
+    openModal(({ close }) =>
+      createLeaderboardContent({ results: loadResults(), close })
+    );
   };
 
   view = createGameView({
     onNewGame: startNewGame,
-    onOpenLeaderboard,
+    onOpenLeaderboard: openLeaderboardModal,
     onCardClick: handleCardClick,
   });
   view.mount(mount);

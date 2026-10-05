@@ -1,0 +1,82 @@
+﻿@use "../abstracts" as vars;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: vars.$space * 1.5;
+  background: vars.$color-overlay;
+  backdrop-filter: blur(4px);
+  animation: modal-fade-in vars.$transition-fast ease;
+}
+
+.modal__dialog {
+  width: min(100%, 26rem);
+  max-height: min(80dvh, 100%);
+  overflow: auto;
+  padding: vars.$space * 2;
+  border-radius: vars.$radius * 3;
+  background: vars.$color-surface;
+  box-shadow: vars.$shadow-modal;
+  animation: modal-pop-in vars.$transition-fast ease;
+}
+
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space;
+}
+
+.modal__title {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.modal__text {
+  margin: 0;
+  color: vars.$color-muted;
+  line-height: 1.5;
+}
+
+.modal__empty {
+  margin: 0;
+  padding: vars.$space * 1.5 0;
+  color: vars.$color-muted;
+  text-align: center;
+}
+
+.modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: vars.$space * 0.75;
+  margin-top: vars.$space * 0.75;
+}
+
+.modal__actions .button {
+  flex: 1 1 auto;
+}
+
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
