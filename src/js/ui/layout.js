@@ -52,7 +52,10 @@ const createHeader = ({ onNewGame, onOpenLeaderboard }) => {
 
 const createCounters = () => {
   const movesValue = createElement("span", { className: "counter__value" });
-  const pairsValue = createElement("span", { className: "counter__value" });
+  const pairsValue = createElement("span", {
+    className: "counter__total",
+    text: "0",
+  });
   const pairsTotal = createElement("span", {
     className: "counter__total",
     text: `/ ${TOTAL_PAIRS}`,
@@ -90,7 +93,7 @@ const createCounters = () => {
     pairsCounter
   );
 
-  return { element, movesValue, movesCounter };
+  return { element, movesValue, pairsValue, movesCounter };
 };
 export const createLayout = ({ onNewGame, onOpenLeaderboard }) => {
   const { element: counters, movesValue, pairsValue } = createCounters();

@@ -1,6 +1,11 @@
 import { createLayout } from "./layout";
+import { createCardElement, updateCardElement } from "./card";
 
-export const createGameView = ({ onNewGame, onOpenLeaderboard }) => {
+export const createGameView = ({
+  onNewGame,
+  onOpenLeaderboard,
+  onCardClick,
+}) => {
   const { root, grid, movesValue, pairsValue } = createLayout({
     onNewGame,
     onOpenLeaderboard,
@@ -12,12 +17,29 @@ export const createGameView = ({ onNewGame, onOpenLeaderboard }) => {
   };
   let cardElements = new Map();
 
-  const renderBoard = () => {
+  const renderBoard = (cards) => {
+    cardElements = new Map(
+      cards.map((card) => [
+        card.id,
+        createCardElement(card, () => onCardClick(card.id)),
+      ])
+    );
     grid.replaceChildren(...cardElements.values());
   };
 
-  // eslint-disable-next-line no-unused-vars
-  const updateBoard = (previousCards, cards) => {};
+  const updateBoard = (previousCards, cards) => {
+    const previousById = new Map(previousCards.map((card) => [card.id, card]));
+
+    for (const card of cards) {
+      const previousCard = previousById.get(card.id);
+      if (
+        previousCard.opened !== card.opened ||
+        previousCard.matched !== card.matched
+      ) {
+        updateCardElement(card, cardElements.get(card.id));
+      }
+    }
+  };
 
   return {
     mount: (element) => element.append(root),
