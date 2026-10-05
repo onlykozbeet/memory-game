@@ -25,7 +25,8 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: vars.$color-honey;
+  // background: vars.$color-honey;
+  border: 0.1rem solid vars.$color-honey;
   font-size: 1.5rem;
 }
 

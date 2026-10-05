@@ -25,7 +25,7 @@ const createHeader = ({ onNewGame, onOpenLeaderboard }) => {
     { className: "header__brand" },
     createElement("span", {
       className: "header__logo",
-      text: "test",
+      text: "🧩",
       attrs: { "aria-hidden": "true" },
     }),
     createElement("h1", { className: "header__title", text: "Memory Game" })
@@ -35,13 +35,13 @@ const createHeader = ({ onNewGame, onOpenLeaderboard }) => {
     { className: "header__actions" },
     createHeaderButton({
       variant: "ghost",
-      icon: "#",
+      icon: "↻",
       label: "New Game",
       onClick: onNewGame,
     }),
     createHeaderButton({
       variant: "primary",
-      icon: "#",
+      icon: "🏆",
       label: "Leaderboard",
       onClick: onOpenLeaderboard,
     })
