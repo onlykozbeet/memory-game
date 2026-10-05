@@ -1,5 +1,5 @@
 import { createDeck, TOTAL_PAIRS } from "./deck";
-import { shuffle } from "../utils/shuffle";
+import { shuffle } from "../utils/helpers";
 
 export const createNewGame = () => ({
   cards: shuffle(createDeck()).map((card) => ({
