@@ -1,0 +1,21 @@
+@use "../abstracts" as vars;
+
+@media (max-width: 650px) {
+  .app {
+    gap: vars.$space;
+    padding: vars.$space;
+  }
+
+  .header {
+    justify-content: center;
+  }
+
+  .counters {
+    gap: vars.$space;
+    padding: vars.$space;
+  }
+
+  .board {
+    gap: vars.$space * 0.5;
+  }
+}

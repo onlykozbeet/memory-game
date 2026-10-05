@@ -1,0 +1,13 @@
+@use "../abstracts" as vars;
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  background: vars.$color-background;
+  color: vars.$color-ink;
+  font-family: vars.$font-sans;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
